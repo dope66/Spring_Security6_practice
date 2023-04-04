@@ -30,11 +30,11 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String showLogin(Model model){
-//        model.addAttribute("user",userDTO);
+    public String showLogin(){
 
-        return "login";
+        return "member/login";
     }
+
 
 
 }
