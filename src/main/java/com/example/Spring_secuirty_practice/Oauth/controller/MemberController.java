@@ -34,6 +34,15 @@ public class MemberController {
 
         return "member/login";
     }
+    @PostMapping("/login")
+    public String doLogin(){
+        return "member/login";
+    }
+    @GetMapping("/logout")
+    public String doLogout(){
+        return "member/logout";
+    }
+
 
 
 
