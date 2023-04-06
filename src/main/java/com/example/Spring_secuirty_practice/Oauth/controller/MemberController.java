@@ -65,6 +65,10 @@ public class MemberController {
         return "member/logout";
     }
 
+    @GetMapping("/myPage")
+    public String showMyPage(){
+        return "member/myPage";
+    }
 
 
 
