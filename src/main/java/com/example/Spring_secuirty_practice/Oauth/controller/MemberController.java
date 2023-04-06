@@ -22,6 +22,7 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+
     @GetMapping("/join")
     public String showJoin(Model model) {
         model.addAttribute("userDTO",new UserDTO());
@@ -66,7 +67,10 @@ public class MemberController {
     }
 
     @GetMapping("/myPage")
-    public String showMyPage(){
+    public String showMyPage(Model model){
+        model.addAttribute("username",memberService.getUsername());
+        model.addAttribute("email",memberService.getEmaiL());
+        System.out.println("email = "+ model.addAttribute("email",memberService.getEmaiL()));
         return "member/myPage";
     }
 

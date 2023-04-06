@@ -9,12 +9,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +32,18 @@ public class MemberService {
         Authentication authentication = context.getAuthentication();
         return authentication.getName();
     }
+    public String getEmaiL(){
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+        String username = authentication.getName();
+        Optional<User> user = memberRepository.findByUsername(username);
+        if(user.isPresent()) {
+            return user.get().getEmail();
+        }else{
+            throw new UsernameNotFoundException("User not found");
+        }
+    }
+
 //     회원 가입 시 , 유효성 체크
 
     public Map<String,String> validateHandling(Errors errors){

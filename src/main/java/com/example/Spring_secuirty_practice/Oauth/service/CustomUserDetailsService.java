@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         Optional<User> user = memberRepository.findByUsername(username);
-        System.out.println("user" + user);
+        System.out.println("user = " + user);
 
         if (user.isPresent()) { // isPresent() 메소드 사용
             log.info("User found with username: {}", user.get().getUsername());
@@ -29,5 +29,13 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("아이디 또는 비밀번호가 일치하지 않습니다.");
         }
     }
+    public String getUserEmail(String username){
+        Optional<User> user = memberRepository.findByUsername(username);
 
+        if (user.isPresent()) {
+            return user.get().getEmail();
+        } else {
+            throw new UsernameNotFoundException("User not found");
+        }
+    }
 }

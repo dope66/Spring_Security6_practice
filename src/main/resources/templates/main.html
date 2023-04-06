@@ -4,6 +4,12 @@
       xmlns:th="http://www.thymeleaf.org">
 <th:block layout:fragment="content">
     <h1>Main</h1>
-    <div th:text="${username}"></div>
+    <div th:if="${username}==anonymousUser">
+        로그인이 필요합니다.
+    </div>
+    <div th:if="${username}!=anonymousUser">
+        <div th:text="${username}"></div>
+    </div>
+
 </th:block>
 </html>
