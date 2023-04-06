@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,6 +25,6 @@ public class User {
     private String email;
     @CreationTimestamp
     private Timestamp createDate;
-    private String role = "USER";
+    private String role = "ROLE_USER";
 
 }
