@@ -14,6 +14,10 @@
             <form class="form" th:action="@{/loginProc}" th:object="${userDTO}" th:method="post">
                 <div class="form-group">
                     <label for="username">Username:</label>
+                    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                        <p th:text="${errorMessage}"></p>
+                    </div>
+
                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
                 </div>
                 <div class="form-group">

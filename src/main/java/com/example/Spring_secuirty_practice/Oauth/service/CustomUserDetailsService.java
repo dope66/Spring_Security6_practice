@@ -21,11 +21,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         Optional<User> user = memberRepository.findByUsername(username);
         System.out.println("user = " + user);
+        System.out.println("user is present() = "+user.isPresent());
 
         if (user.isPresent()) { // isPresent() 메소드 사용
             log.info("User found with username: {}", user.get().getUsername());
             return new UserDetail(user.get());
         } else {
+            System.out.println("가입된 아이디가 아닙니다.");
             throw new UsernameNotFoundException("아이디 또는 비밀번호가 일치하지 않습니다.");
         }
     }
