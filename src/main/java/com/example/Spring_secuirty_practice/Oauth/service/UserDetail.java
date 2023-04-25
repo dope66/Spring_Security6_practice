@@ -20,7 +20,7 @@ public class UserDetail implements UserDetails {
         collect.add(new GrantedAuthority() {
             @Override
             public String getAuthority() {
-                return user.getRole();
+                return String.valueOf(user.getRole());
             }
         });
         return collect;

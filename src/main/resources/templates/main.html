@@ -6,6 +6,8 @@
     <h1>Main</h1>
     <div th:if="${username}==anonymousUser">
         로그인이 필요합니다.
+        <a href="/login/oauth2/code/google" class="btn btn-sm btn-success active" role="button">Google Login</a><br>
+
     </div>
     <div th:if="${username}!=anonymousUser">
         <div th:text="${username}"></div>

@@ -30,6 +30,7 @@ public class MemberService {
     public String getUsername(){
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
+        System.out.println("authentication = " + authentication);
         return authentication.getName();
     }
     public String getEmaiL(){

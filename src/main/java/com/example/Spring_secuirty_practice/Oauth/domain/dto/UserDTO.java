@@ -1,5 +1,6 @@
 package com.example.Spring_secuirty_practice.Oauth.domain.dto;
 
+import com.example.Spring_secuirty_practice.Oauth.Role.Role;
 import com.example.Spring_secuirty_practice.Oauth.domain.User;
 import com.example.Spring_secuirty_practice.Oauth.passwordBean.PasswordBean;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,12 +27,15 @@ public class UserDTO {
     @NotBlank(message = "이메일은 필수 입력 값입니다.")
     @Email
     private String email;
+    @Builder.Default
+    private Role role = Role.USER; // 기본값으로 ROLE_USER 지정
+
     public User toEntity() {
         PasswordBean passwordBean = new PasswordBean();
         return User.builder().email(email)
                 .username(username)
                 .password(passwordBean.encodePassword(password))
-                .role("ROLE_USER")
+                .role(role) // Role 값을 설정
                 .build();
     }
 

@@ -1,5 +1,6 @@
 package com.example.Spring_secuirty_practice.Oauth.domain;
 
+import com.example.Spring_secuirty_practice.Oauth.Role.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
@@ -25,6 +26,6 @@ public class User{
     private String email;
     @CreationTimestamp
     private Timestamp createDate;
-    private String role = "ROLE_USER";
+    private Role role;
 
 }

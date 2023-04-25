@@ -25,6 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         if (user.isPresent()) { // isPresent() 메소드 사용
             log.info("User found with username: {}", user.get().getUsername());
+
             return new UserDetail(user.get());
         } else {
             System.out.println("가입된 아이디가 아닙니다.");
