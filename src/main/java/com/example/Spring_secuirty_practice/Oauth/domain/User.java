@@ -28,4 +28,13 @@ public class User{
     private Timestamp createDate;
     private Role role;
 
+    public User update(String username) {
+        this.username = username;
+        return this;
+    }
+    public String getRoleKey(){
+        return this.role.getKey();
+    }
+
+
 }

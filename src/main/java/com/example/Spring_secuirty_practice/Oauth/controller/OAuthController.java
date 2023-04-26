@@ -11,7 +11,4 @@ public class OAuthController {
     public String login(){
         return "login";
     }
-
-
-
 }
